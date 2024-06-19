@@ -36,6 +36,16 @@ class ProductController extends Controller
         return redirect("/");
     }
 
+    public function to_updt_view(int $id) {
+        $product = Product::find($id);
+
+        // return dd($product);
+
+        return view("updt_product", [
+            "product" => $product
+        ]);
+    }
+
     public function update(Request $request) {
 
         $product = Product::find($request->input("id"));
@@ -45,7 +55,7 @@ class ProductController extends Controller
         $product->price = $request->input("price");
 
         $product->save();
-        return view("");
+        return redirect("/");
     }
 
     public function delete(Request $request) {
