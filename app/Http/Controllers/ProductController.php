@@ -63,6 +63,6 @@ class ProductController extends Controller
         $product = Product::find($request->input("id"));
 
         $product->delete();
-        return view("");
+        return  redirect("/");
     }
 }

@@ -8,9 +8,14 @@
 <body>
     <ul>
         @foreach ($products as $product)
-        <li> <a href="{{ route('product', ['id' => $product->id]) }}"> 
-            {{$product->name}} </a>  {{ " - " . $product->price . "€"}} 
+        <li> <a href="{{ route('product', ['id' => $product->id]) }}"> {{$product->name}} </a>  
+            {{ " - " . $product->price . "€"}} 
             <button  onclick="window.location= '{{route('update_r_product', ['id' => $product->id]);}}'"> Edit </button>
+            <form action="{{ route("del_product") }}" method="POST" style="display :inline;">
+                @csrf <!-- {{ csrf_field() }} -->
+                <input type="hidden" name="id" value={{$product->id}}>
+                <input type="submit" value="Supprimer"> 
+            </form>
         </li>
         @endforeach
     </ul>
