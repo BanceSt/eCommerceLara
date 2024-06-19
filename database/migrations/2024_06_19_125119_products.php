@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->text("description");
             $table->float("price");
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
