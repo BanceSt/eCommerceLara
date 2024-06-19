@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function show() {
         $products = Product::all();
-        return view("/", [
+        return view("home", [
             "products" => $products
         ]);
     }
