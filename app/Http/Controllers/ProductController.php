@@ -7,10 +7,18 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function show() {
+    public function index() {
         $products = Product::all();
         return view("home", [
             "products" => $products
+        ]);
+    }
+
+    public function show(int $id) {
+        $product = Product::find($id);
+
+        return view("product", [
+            "product" => $product
         ]);
     }
 

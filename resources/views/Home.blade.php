@@ -8,7 +8,7 @@
 <body>
     <ul>
         @foreach ($products as $product)
-        <li> {{$product->name . " - " . $product->price . "€"}} </li>
+        <li> <a href="{{ route('product', ['id' => $product->id]) }}"> {{$product->name}} </a>  {{ " - " . $product->price . "€"}} </li>
         @endforeach
     </ul>
 </body>
