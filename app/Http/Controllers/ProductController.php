@@ -28,12 +28,12 @@ class ProductController extends Controller
 
         $product->name = $request->input("name");
         $product->description = $request->input("description");
-        $product->price = $request->input("price");
+        $product->price = number_format((float)$request->input("price"), 2, '.', '');
 
         $product->save();
 
 
-        return view("new_product");
+        return redirect("/");
     }
 
     public function update(Request $request) {

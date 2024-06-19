@@ -11,5 +11,6 @@
         <li> <a href="{{ route('product', ['id' => $product->id]) }}"> {{$product->name}} </a>  {{ " - " . $product->price . "€"}} </li>
         @endforeach
     </ul>
+    <button  onclick="window.location= '{{route('new_product');}}'"> Ajouter nouveau produit </button>
 </body>
 </html>
