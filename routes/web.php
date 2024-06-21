@@ -1,15 +1,20 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ProductController::class, "index"])->name("home");
-Route::get('/product/{id}', [ProductController::class, "show"])->name("product");
-Route::post('/product/add', [ProductController::class, "create"])->name("add_product");
-Route::post('/product/updt', [ProductController::class, "update"])->name("update_product");
-Route::post('/product/del', [ProductController::class, "delete"])->name("del_product");
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/new_product', function() {
-    return view("new_product");
-})->name("new_product");
-Route::get('/updt_product/{id}', [ProductController::class, "to_updt_view"])->name("update_r_product");
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
