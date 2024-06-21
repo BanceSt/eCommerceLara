@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text("description");
             $table->string("price");
             $table->timestamp('created_at')->useCurrent();
+            $table->string("img");
         });
     }
 

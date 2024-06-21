@@ -20,6 +20,10 @@ class ProductFactory extends Factory
             "name" => fake()->text(15),
             "description" => fake()->realText(150),
             "price" => number_format(fake()->randomFloat(2, 0.5, 100), 2, '.', ''),
+            "img" => str_replace("public", "", fake()->image("public/storage/images", 800, 600, "fashion", true, true)) 
         ];
+
+        
     }
+    
 }
